@@ -29,12 +29,12 @@ export class AuthService {
 	readonly currentUser = this.user.asReadonly();
 
 	register(credentials: { username: string; password: string }): Observable<AuthResponse> {
-		return this.http.post<AuthResponse>(`${this.apiUrl}/register`, credentials)
+		return this.http.post<AuthResponse>(`${this.apiUrl}/auth/register`, credentials)
 			.pipe(tap(response => this.setSession(response)));
 	}
 
 	login(credentials: { username: string; password: string }): Observable<AuthResponse> {
-		return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials)
+		return this.http.post<AuthResponse>(`${this.apiUrl}/auth/login`, credentials)
 			.pipe(tap(response => this.setSession(response)));
 	}
 
